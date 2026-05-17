@@ -2,13 +2,13 @@
 bin/
 obj/
 
-# Arquivos de ferramentas e caches do C# / Roslyn
+# Arquivos de ferramentas e caches do C#
 *.csproj.lscache
 *.user
 *.userosscache
 *.sln.docstates
 
-# Configurações do VS Code (opcional, mas recomendado ignorar o que for workspace/histórico)
+# Configurações do VS Code
 .vscode/tasks.json
 .vscode/launch.json
 .vscode/hover.json
