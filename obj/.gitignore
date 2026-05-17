@@ -1,0 +1,14 @@
+# Pastas de compilação do .NET
+bin/
+obj/
+
+# Arquivos de ferramentas e caches do C# / Roslyn
+*.csproj.lscache
+*.user
+*.userosscache
+*.sln.docstates
+
+# Configurações do VS Code (opcional, mas recomendado ignorar o que for workspace/histórico)
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/hover.json
