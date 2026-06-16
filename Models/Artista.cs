@@ -1,4 +1,6 @@
-class Artista
+namespace ScreenSound.Models;
+
+internal class Artista
 {
     public Artista(string nome, string funcao)
     {
