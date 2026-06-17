@@ -1,9 +1,11 @@
 namespace ScreenSound.Menus;
+using ScreenSound.Models;
 
-internal class MenuExibirLogo
+internal class MenuExibirLogo : Menu
 {
-    public void Executar()
+    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
+        base.Executar(bandasRegistradas);
         Console.WriteLine(@"
 
 ░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░

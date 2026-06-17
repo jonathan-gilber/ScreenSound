@@ -15,10 +15,18 @@ Dictionary<string, Banda> bandasRegistradas = new();
 bandasRegistradas.Add(SystemOfADown.Nome, SystemOfADown);
 bandasRegistradas.Add(LinkinPark.Nome, LinkinPark);
 
+Dictionary<int, Menu> opcoesDoMenu = new();
+opcoesDoMenu.Add(1, new MenuRegistrarBanda());
+opcoesDoMenu.Add(2, new MenuRegistrarAlbum());
+opcoesDoMenu.Add(3, new MenuMostrarBandasRegistradas());
+opcoesDoMenu.Add(4, new MenuAvaliarBanda());
+opcoesDoMenu.Add(5, new MenuExibirDetalhes());
+opcoesDoMenu.Add(-1, new MenuSair());
+
 void ExibirOpcoesDoMenu()
 {
     MenuExibirLogo logo = new();
-    logo.Executar();
+    logo.Executar(bandasRegistradas);
     Console.WriteLine("\nDigite 1 para registrar uma banda");
     Console.WriteLine("Digite 2 para registrar o álbum de uma banda");
     Console.WriteLine("Digite 3 para mostrar todas as bandas");
@@ -30,41 +38,22 @@ void ExibirOpcoesDoMenu()
     string opcaoEscolhida = Console.ReadLine()!;
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
 
-    switch (opcaoEscolhidaNumerica)
+    if (opcoesDoMenu.ContainsKey(opcaoEscolhidaNumerica))
     {
-        case 1:
-            MenuRegistrarBanda menu1 = new();
-            menu1.Executar(bandasRegistradas);
+        Menu menuASerExibido = opcoesDoMenu[opcaoEscolhidaNumerica];
+        menuASerExibido.Executar(bandasRegistradas);
+        if (opcaoEscolhidaNumerica > 0)
+        {
             ExibirOpcoesDoMenu();
-            break;
-        case 2:
-            MenuRegistrarAlbum menu2 = new();
-            menu2.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 3:
-            MenuMostrarBandasRegistradas menu3 = new();
-            menu3.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 4:
-            MenuAvaliarBanda menu4 = new();
-            menu4.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 5:
-            MenuExibirDetalhes menu5 = new();
-            menu5.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case -1:
-            MenuSair MenuSair = new();
-            MenuSair.Executar();
-            break;
-        default:
+        }
+        else
+        {
             Console.WriteLine("Opção inválida");
-            break;
+        }
+    }
+    else
+    {
+        Console.WriteLine("Opção inválida");
     }
 }
-
 ExibirOpcoesDoMenu();

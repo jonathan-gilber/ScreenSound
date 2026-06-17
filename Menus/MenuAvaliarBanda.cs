@@ -4,9 +4,9 @@ using ScreenSound.Models;
 
 internal class MenuAvaliarBanda : Menu
 {
-    public void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        Console.Clear();
+        base.Executar(bandasRegistradas);
         ExibirTituloDaOpcao("Avaliar banda");
         Console.Write("Digite o nome da banda que deseja avaliar: ");
         string nomeDaBanda = Console.ReadLine()!;
@@ -16,7 +16,8 @@ internal class MenuAvaliarBanda : Menu
             Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
             Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
             Console.WriteLine($"\nA nota {nota.Nota} foi registrada com sucesso para a banda {nomeDaBanda}");
-            Thread.Sleep(2000);
+            Console.WriteLine($"Digite uma tecla para voltar ao menu principal");
+            Console.ReadKey();
             Console.Clear();
         }
         else
